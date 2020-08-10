@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Class Management
+{% endblock %}
+
+{% block main %}
+
+{% include "alayout.html" %}
+{% block amain %}{% endblock %}
+        <div class="d-flex justify-content-between border-bottom pt-3 pb-2 mb-3">
+            <h3>Current Classes</h3>
+            <a href="/addclass">
+                <button type="button" id="addclassbutton" class="btn btn-success" name="submit" value="addclass"><i class="fas fa-plus mr-4"></i>Add Class</button>
+            </a>
+        </div>
+        <div class="table-responsive pt-2">
+            <table class="table">
+                <thead class="thead-light">
+                    <th></th>
+                    <th>Subject</th>
+                    <th>Level</th>
+                    <th>Classroom</th>
+                    <th>Tutor</th>
+                    <th>Day</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                {% for x in rows %}
+                    <tr class="toggler collapsed" data-toggle="collapse" data-target=#{{loop.index}}>
+                        <td>
+                            <i class="fas fa-angle-right"></i>
+                        </td>
+                        <td>{{x["subject"]}}</td>
+                        <td>{{x["level"]}}</td>
+                        <td>{{x["classroom"]}}</td>
+                        <td>{{x["tutor"]}}</td>
+                        <td>{{x["day"]}}</td>
+                        <td>{{x["start"]}}</td>
+                        <td>{{x["end"]}}</td>
+                        <td id="removebutton">
+                            <form method="post" action="/manage">
+                                <button type="submit" name="remove" value={{x["id"]}} class="btn btn-danger"><i class="fas fa-minus mr-4"></i>Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="nestedcells"></td>
+                        <td class="nestedcells" colspan="4">
+                            <div id={{loop.index}} class="collapse" colspan="2">
+                                <table class="table">
+                                {% if x["classlist"]|length %}
+                                    <thead class="thead-light">
+                                        <th>S/N</th>
+                                        <th colspan="2">Student</th>
+                                        <th></th>
+                                        <th></th>
+                                    </thead>
+                                    {% for y in x["classlist"] %}
+                                        <tr>
+                                            <td>{{loop.index}}</td>
+                                            <td colspan="2">{{[y["first"], y["last"]]|join(" ")}}</td>
+                                            <td></td>
+                                            <td id="removestudentbutton">
+                                                <form method="post" action="/manage">
+                                                    <button type="submit" name="sremove" value={{y["id"]}} class="btn btn-danger"><i class="fas fa-minus mr-4"></i>Remove Student</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        No students enrolled
+                                    </tr>
+                                {% endif %}
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

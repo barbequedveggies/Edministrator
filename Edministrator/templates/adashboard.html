@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block main %}
+
+{% include "alayout.html" %}
+{% block amain %}{% endblock %}
+        <div class="d-flex justify-content-between border-bottom pt-3 pb-2 mb-3">
+            <h3>Dashboard </h3>
+            <h3><i class="far fa-calendar-check mr-4"></i>{{cal}} </h3>
+        </div>
+        <h3>Classroom Status </h3>
+        <div class="d-flex justify-content-between pt-3 pb-2 px-4 mb-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body text-left align-middle" id="cm1">
+                    <h4 class="m-0"><i class="fas fa-home mr-4"></i>Classroom 1</h4>
+                </div>
+                <div class="card-body">
+                    {% if 1 in occupied %}
+                    <p>Status:<span class="badge badge-danger ml-4">Occupied</span></p>
+                    <p>Class: {{subject["1"]}}</p>
+                    <p>Time: {{time["1"]}}</p>
+                    {% else %}
+                    <p>Status:<span class="badge badge-success ml-4">Available</span></p>
+                    <p>Class: -</p>
+                    <p>Time: -</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body text-left align-middle" id="cm2">
+                    <h4 class="m-0"><i class="fas fa-home mr-4"></i>Classroom 2</h4>
+                </div>
+                <div class="card-body">
+                    {% if 2 in occupied %}
+                    <p>Status:<span class="badge badge-danger ml-4">Occupied</span></p>
+                    <p>Class: {{subject["2"]}}</p>
+                    <p>Time: {{time["2"]}}</p>
+                    {% else %}
+                    <p>Status:<span class="badge badge-success ml-4">Available</span></p>
+                    <p>Class: -</p>
+                    <p>Time: -</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body text-left align-middle" id="cm3">
+                    <h4 class="m-0"><i class="fas fa-home mr-4"></i>Classroom 3</h4>
+                </div>
+                <div class="card-body">
+                    {% if 3 in occupied %}
+                    <p>Status:<span class="badge badge-danger ml-4">Occupied</span></p>
+                    <p>Class: {{subject["3"]}}</p>
+                    <p>Time: {{time["3"]}}</p>
+                    {% else %}
+                    <p>Status:<span class="badge badge-success ml-4">Available</span></p>
+                    <p>Class: -</p>
+                    <p>Time: -</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <h3>Today's Classes </h3>
+        <div class="table-responsive pt-2">
+            <table class="table table-striped">
+                <thead>
+                    <th>Subject</th>
+                    <th>Level</th>
+                    <th>Classroom</th>
+                    <th>Tutor</th>
+                    <th>Start</th>
+                    <th>End</th>
+                </thead>
+                    {% for x in rows %}
+                        <tr>
+                            <td>{{x["subject"]}}</td>
+                            <td>{{x["level"]}}</td>
+                            <td>{{x["classroom"]}}</td>
+                            <td>{{x["tutor"]}}</td>
+                            <td>{{x["start"]}}</td>
+                            <td>{{x["end"]}}</td>
+                        </tr>
+                    {% endfor %}
+        </div>
+    </main>
+{% endblock %}

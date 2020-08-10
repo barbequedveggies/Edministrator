@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Class
+{% endblock %}
+
+{% block main %}
+
+{% include "alayout.html" %}
+{% block amain %}{% endblock %}
+        <div class="d-flex justify-content-center pt-3 pb-2 mb-3">
+                <div class="card">
+                    <div class="card-header" id="addclass">
+                        <h4 class="mb-0">
+                            <i class="fas fa-user-graduate fa-fw mr-4"></i>Add Class
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/addclass" method="post">
+                            <div class="form-group row">
+                                <div class="form-group col-md">
+                                    <label for="inputsubject">Subject</label>
+                                    <input class="form-control" id="inputsubject" name="subject" placeholder="Subject" type="text">
+                                </div>
+                                <div class="form-group col-md">
+                                    <label for="inputlevel">Level</label>
+                                    <input class="form-control" id="inputlevel" name="level" placeholder="Level" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-group col-md">
+                                    <label for="selecttutor">Tutor</label>
+                                    <select class="form-control" id="selecttutor" name="tutor">
+                                        <option>Please select</option>
+                                        {% for x in tutor %}
+                                            <option>{{x["full"]}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group col-md">
+                                    <label for="selectroom">Classroom</label>
+                                    <select class="form-control" id="selectroom" name="classroom">
+                                        <option selected>Please select</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-group col-4-sm px-3">
+                                    <label for="selectday">Day</label>
+                                    <select class="form-control" id="selectday" name="day">
+                                        <option selected>Please select</option>
+                                        <option value="1">Monday</option>
+                                        <option value="2">Tuesday</option>
+                                        <option value="3">Wednesday</option>
+                                        <option value="4">Thursday</option>
+                                        <option value="5">Friday</option>
+                                        <option value="6">Saturday</option>
+                                        <option value="7">Sunday</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-4-sm px-3">
+                                    <label for="selectstart">Start</label>
+                                    <input type="time" id="selectstart" class="form-control" placeholder="Class Starts" name="start">
+                                </div>
+                                <div class="form-group col-4-sm px-3">
+                                    <label for="selectend">End</label>
+                                    <input type="time" id="selectend" class="form-control" placeholder="Class Ends" name="end">
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="submit" class="btn btn-primary login">Create Class</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}

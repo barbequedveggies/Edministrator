@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center pt-3 pb-2 mb-3">
+            <div class="card align-self-center w-25">
+                <div class="card-header" id="title">
+                    <h3 class="mb-0">
+                        <span id="logo">Edministrator</span>
+                    </h3>
+                </div>
+                <div class="card-body justify-content-center">
+                    <h3 align="center">Log In As:</h3>
+                    <div class="justify-content-center row p-3">
+                        <form method="get" action="/admin">
+                            <button type="submit" class="btn btn-secondary admin">
+                                <h4 class="mb-0"><i class="fas fa-user-cog fa-fw mr-3"></i>Admin</h4>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="justify-content-center row p-3">
+                        <form method="get" action="/student">
+                            <button type="submit" class="btn btn-block student">
+                                <h4 class="mb-0"><i class="fas fa-user-graduate fa-fw mr-3"></i>Student</h4>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

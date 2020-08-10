@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Student Dashboard
+{% endblock %}
+
+{% block main %}
+
+{% include "slayout.html" %}
+{% block smain %}{% endblock %}
+    <div class="d-flex justify-content-between border-bottom pt-3 pb-2 mb-3">
+            <h3>Dashboard </h3>
+            <h3><i class="far fa-calendar-check mr-4"></i>{{cal}}</h3>
+    </div>
+    <h3>Enrolled Classes </h3>
+    <div class="table-responsive pt-2">
+        <table class="table table-striped">
+            <thead>
+                <th>Subject</th>
+                <th>Level</th>
+                <th>Classroom</th>
+                <th>Tutor</th>
+                <th>Day</th>
+                <th>Start</th>
+                <th>End</th>
+                <th></th>
+            </thead>
+            {% for x in enrolled %}
+                <tr>
+                    <td>{{x["subject"]}}</td>
+                    <td>{{x["level"]}}</td>
+                    <td>{{x["classroom"]}}</td>
+                    <td>{{x["tutor"]}}</td>
+                    <td>{{x["day"]}}</td>
+                    <td>{{x["start"]}}</td>
+                    <td>{{x["end"]}}</td>
+                    <td id="quitbutton">
+                        <form method="post" action="/studentdashboard">
+                            <button type="submit" name="quit" value={{x["id"]}} class="btn btn-danger"><i class="fas fa-minus mr-4"></i>Leave</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</main>
+{% endblock %}

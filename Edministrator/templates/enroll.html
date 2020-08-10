@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Enroll
+{% endblock %}
+
+{% block main %}
+
+{% include "slayout.html" %}
+{% block smain %}{% endblock %}
+        <div class="d-flex justify-content-between pt-3 mb-1">
+            <h3>Classes Available</h3>
+        </div>
+        <div class="table-responsive pt-2">
+            <table class="table table-striped">
+                <thead>
+                    <th>Subject</th>
+                    <th>Level</th>
+                    <th>Classroom</th>
+                    <th>Tutor</th>
+                    <th>Day</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th></th>
+                </thead>
+                {% for x in notenrolled %}
+                    <tr>
+                        <td>{{x["subject"]}}</td>
+                        <td>{{x["level"]}}</td>
+                        <td>{{x["classroom"]}}</td>
+                        <td>{{x["tutor"]}}</td>
+                        <td>{{x["day"]}}</td>
+                        <td>{{x["start"]}}</td>
+                        <td>{{x["end"]}}</td>
+                        <td id="enrollbutton">
+                            <form method="post" action="/enroll">
+                                <button type="submit" name="enroll" value={{x["id"]}} class="btn btn-success"><i class="fas fa-plus mr-4"></i>Enroll</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Student Management
+{% endblock %}
+
+{% block main%}
+
+{% include "alayout.html" %}
+{% block amain %}{% endblock %}
+    <div class="d-flex justify-content-between border-bottom pt-3 pb-2 mb-3">
+        <h3>Student List</h3>
+    </div>
+    <div class="table-responsive pt-2">
+        <table class="table">
+            <thead class="thead-light">
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th></th>
+            </thead>
+            {% for x in rows %}
+                <tr class="toggler collapsed" data-toggle="collapse" data-target=#{{loop.index}}>
+                    <td>
+                        <i class="fas fa-angle-right"></i>
+                    </td>
+                    <td>{{x["first"]}}</td>
+                    <td>{{x["last"]}}</td>
+                    <td>{{x["username"]}}</td>
+                    <td id="removestudent">
+                        <form method="post" action="/students">
+                            <button type="submit" name="remove" value={{x["id"]}} class="btn btn-danger"><i class="fas fa-minus mr-4"></i>Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="nestedcells"></td>
+                    <td colspan="3" class="nestedcells">
+                        <div id={{loop.index}} class="collapse" colspan="2">
+                            <table class="table">
+                            {% if x["classes"]|length %}
+                                <thead class="thead-light">
+                                    <th>S/N</th>
+                                    <th>Subject</th>
+                                    <th>Level</th>
+                                    <th>Classroom</th>
+                                    <th>Tutor</th>
+                                    <th>Day</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th></th>
+                                </thead>
+                                {% for y in x["classes"] %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{y["subject"]}}</td>
+                                        <td>{{y["level"]}}</td>
+                                        <td>{{y["classroom"]}}</td>
+                                        <td>{{y["tutor"]}}</td>
+                                        <td>{{y["day"]}}</td>
+                                        <td>{{y["start"]}}</td>
+                                       <td>{{y["end"]}}</td>
+                                        <td id="removestudentbutton">
+                                            <form method="post" action="/students">
+                                                <button type="submit" name="cremove" value={{y["id"]}} class="btn btn-danger"><i class="fas fa-minus mr-4"></i>Remove from Class</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    No classes enrolled
+                                </tr>
+                            {% endif %}
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</main>
+{% endblock %}

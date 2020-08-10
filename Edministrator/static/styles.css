@@ -1,0 +1,205 @@
+/* layout stying */
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+}
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+body
+{
+    background-color:#f8f9fa;
+    text-align: left;
+    padding-top: 60px;
+}
+@media screen and (max-width: 567px)
+{
+    body { padding-top: 100px; }
+}
+.notif
+{
+    z-index:5;
+}
+#logo
+{
+  font: 35px/1.3'Oleo Script', Helvetica, sans-serif;
+  color: white;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+
+/* Styling for buttons on landing page */
+.admin
+{
+    background-color:#353435;
+    color:white;
+    border-color:#353435;
+}
+.student
+{
+    background-color:#30a76b;
+    color:white;
+    border-color:#30a76b;
+}
+.student:hover
+{
+    background-color:#3db478;
+    border-color:#3db478;
+}
+.link
+{
+    text-decoration: none!important;
+}
+#title
+{
+    text-align:center;
+    background-color:#38aadc;
+    text-decoration: none!important;
+}
+.login
+{
+    background-color:#38aadc;
+    color:white;
+    border-color:#38aadc;
+}
+.login:hover
+{
+    background-color:#2b9dcf;
+    border-color:#2b9dcf;
+}
+
+
+/* Styling nav */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 55px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.sidebar-sticky
+{
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    background-color:#353435;
+}
+.sidebar .nav-link
+{
+  color: white;
+}
+.brand
+{
+    background-color:#38aadc;
+}
+
+
+/* Styling Dashboards */
+#cm1
+{
+    background-color:#fac919;
+    color:white;
+}
+#cm2
+{
+    background-color:#f66b54;
+    color:white;
+}
+#cm3
+{
+    background-color:#30a76b;
+    color:white;
+}
+.profile
+{
+    color:white;
+}
+#img
+{
+    border: 3px solid #f8f9fa;
+    height: 4rem;
+    width: 4rem;
+}
+
+
+/* Styling Register Page */
+#headingOne
+{
+    background-color:#30a76b;
+    color:white;
+    text-decoration: none!important;
+}
+#headingTwo
+{
+    background-color:#fac919;
+    color:white;
+    text-decoration: none!important;
+}
+
+
+/* Styling Class/Student Management Page */
+#removebutton, #removestudentbutton, #removestudent
+{
+    text-align:center!important;
+}
+#addclassbutton
+{
+    text-decoration: none!important;
+}
+.toggler .fa-angle-right {
+  transform: rotate(90deg);
+  transition: .3s transform ease-in-out;
+  display: inline-block;
+}
+.toggler.collapsed .fa-angle-right {
+  transform: rotate(0deg);
+}
+.nestedcells
+{
+    padding:0px!important;
+    border:none!important;
+}
+#addclass
+{
+    background-color:#30a76b;
+    color:white;
+    text-decoration: none!important;
+    text-align:center!important;
+}
+.register
+{
+    background-color:#38aadc;
+    color:white;
+    border-color:#38aadc;
+}
+.register:hover
+{
+    background-color:#2b9dcf;
+    border-color:#2b9dcf;
+}
+
+
+/* Styling Student Portal Enroll Page */
+#enrollbutton, #quitbutton
+{
+    text-align:center!important;
+}
+.form-control
+{
+    width:100%!important;
+}
+

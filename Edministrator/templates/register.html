@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+{% include "alayout.html" %}
+{% block amain %}{% endblock %}
+    <div class="d-flex justify-content-center pt-3 pb-2 mb-3">
+        <div id="accordion">
+            <div class="card justify-content-center" style="width: 18rem;">
+                <button class="btn btn-link card-header m-0" data-toggle="collapse" data-target="#collapseOne"  id="headingOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-alt fa-fw mr-4"></i>Register Student
+                    </h4>
+                </button>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <form class="text-center" action="/register" method="post">
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="sfirst" placeholder="First Name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="slast" placeholder="Last Name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="susername" placeholder="Username" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="spassword" placeholder="Password" pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"
+                                    title = "Must contain at least one uppercase alphabet, one lowercase alphabet, one number and be at least 8 characters long">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="confirmation" placeholder="Type password again" type="password">
+                            </div>
+                            <button class="btn btn-primary register" name="submit" value="student" type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <button class="btn btn-link collapsed card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-graduate fa-fw mr-4"></i>Register Tutor
+                    </h4>
+                </button>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <form class="text-center" action="/register" method="post">
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="tfirst" placeholder="First Name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="tlast" placeholder="Last Name" type="text">
+                            </div>
+                            <button class="btn btn-primary register" name="submit" value="tutor" type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
